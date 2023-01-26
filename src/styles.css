@@ -1,0 +1,285 @@
+@import "https://fonts.googleapis.com/css?family=Reenie+Beanie";
+
+body {
+  margin: 0;
+  background: #eee;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular",
+    sans-serif;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 0 5%;
+}
+
+.ContentEditable__root {
+  border: 0;
+  font-size: 15px;
+  display: block;
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  padding: 8px 28px;
+  min-height: calc(100% - 16px);
+}
+
+.Placeholder__root {
+  font-size: 15px;
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 8px;
+  left: 28px;
+  right: 28px;
+  user-select: none;
+  white-space: nowrap;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.StickyEditorTheme__paragraph {
+  margin: 0;
+  position: "relative";
+}
+
+.StickyNode__contentEditable {
+  min-height: 20px;
+  border: 0;
+  resize: none;
+  cursor: text;
+  font-size: 24px;
+  caret-color: rgb(5, 5, 5);
+  display: block;
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  padding: 10px;
+  user-select: text;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.StickyNode__placeholder {
+  font-size: 24px;
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 30px;
+  left: 20px;
+  width: 120px;
+  user-select: none;
+  white-space: nowrap;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.editor {
+  height: 100%;
+  position: relative;
+}
+
+.editor-container {
+  background: #fff;
+  margin: 20px auto 20px auto;
+  border-radius: 2px;
+  max-width: 600px;
+  color: #000;
+  position: relative;
+  line-height: 20px;
+  font-weight: 400;
+  text-align: left;
+  border-radius: 10px;
+}
+
+.editor-input {
+  min-height: 150px;
+  resize: none;
+  font-size: 15px;
+  caret-color: rgb(5, 5, 5);
+  position: relative;
+  tab-size: 1;
+  outline: 0;
+  padding: 0px 0px 5px;
+  caret-color: #444;
+}
+
+.editor-placeholder {
+  color: #999;
+  overflow: hidden;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 53px;
+  left: 27px;
+  font-size: 15px;
+  user-select: none;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.editor-paragraph {
+  margin: 0 0 15px 0;
+  position: relative;
+}
+
+.toolbar {
+  display: flex;
+  margin-bottom: 1px;
+  background: #fff;
+  padding: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  vertical-align: middle;
+  overflow: auto;
+  height: 36px;
+}
+
+.toolbar button.toolbar-item {
+  border: 0;
+  display: flex;
+  background: none;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(223, 223, 223);
+}
+
+.toolbar button.toolbar-item.spaced {
+  margin: 5px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+
+.toolbar .toolbar-item:hover:not([disabled]) {
+  background-color: #eee;
+}
+
+.toolbar .toolbar-item.font-family .text {
+  display: block;
+  max-width: 40px;
+}
+
+.toolbar .toolbar-item .text {
+  display: flex;
+  line-height: 20px;
+  vertical-align: middle;
+  font-size: 14px;
+  color: rgb(104, 104, 104);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 20px;
+  text-align: left;
+}
+
+.sticky-note-container {
+  position: absolute;
+  z-index: 9;
+  width: 120px;
+  display: inline-block;
+}
+
+.sticky-note {
+  line-height: 1;
+  text-align: left;
+  width: 120px;
+  margin: 25px;
+  padding: 20px 10px;
+  position: relative;
+  border: 1px solid #e8e8e8;
+  font-family: "Reenie Beanie";
+  font-size: 24px;
+  border-bottom-right-radius: 60px 5px;
+  display: block;
+  cursor: move;
+}
+
+.sticky-note:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: -0px;
+  bottom: 20px;
+  width: 120px;
+  height: 25px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 15px 5px rgba(0, 0, 0, 0.4);
+  transform: matrix(-1, -0.1, 0, 1, 0, 0);
+}
+
+.sticky-note.yellow {
+  border-top: 1px solid #fdfd86;
+  background: linear-gradient(
+    135deg,
+    #ffff88 81%,
+    #ffff88 82%,
+    #ffff88 82%,
+    #ffffc6 100%
+  );
+}
+
+.sticky-note.pink {
+  border-top: 1px solid #e7d1e4;
+  background: linear-gradient(
+    135deg,
+    #f7cbe8 81%,
+    #f7cbe8 82%,
+    #f7cbe8 82%,
+    #e7bfe1 100%
+  );
+}
+
+.sticky-note-container.dragging {
+  transition: none !important;
+}
+
+.sticky-note div {
+  cursor: text;
+}
+
+.sticky-note .delete {
+  border: 0;
+  background: none;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 10px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.sticky-note .delete:hover {
+  font-weight: bold;
+  opacity: 1;
+}
+
+.sticky-note .color {
+  border: 0;
+  background: none;
+  position: absolute;
+  top: 8px;
+  right: 25px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.sticky-note .color:hover {
+  opacity: 1;
+}
+
+.sticky-note .color i {
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  background-image: url(https://static.thenounproject.com/png/61592-200.png);
+}
